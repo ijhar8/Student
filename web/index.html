@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>Student managment</title>
+	<style type="text/css">
+            #head
+{
+	
+	position: relative;
+        left:700px;
+         width: 250px;
+
+}
+#header{
+    width: 160px;
+}
+
+
+	   #body{ 
+	         background-image:url(bg.jpg);
+		 }
+    
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+input[type=Email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#button {
+    width: 100px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    left: 140px;
+    top: 15px;
+}
+input[type=button]:hover {
+       background-color: #45a049;
+      }
+    .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    }
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: -610px;
+    right: -7px
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: greenyellow;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ff6666
+        
+    }
+.dropdown:hover .dropdown-content {
+    display: block;
+    border: solid aqua;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ff6666;
+}
+#form{
+	border-color: red;
+	border: solid 5px;
+	padding: 35px;
+        position: relative;
+	width: 40%;
+	height: 500px;
+        top:-70px;
+        left: 20px;
+        background: #99f533;
+
+}
+td{
+	font-size: 20px;
+        color: red;
+}
+#table
+{
+	position: relative;
+	left: 30px;
+	top:30px;
+}
+</style>
+</head>
+<body id="body">
+    <div id="head">
+	<h1 id="header"> IJHAR.org</h1>
+    </div>
+    <div id="form">
+	<form action="SaveData">
+			<table id="table">
+				<tr >
+					<td>Name</td>
+					
+					<td><input type="text" name="Name" required></td>
+				</tr>
+				<tr>
+					<td>Roll Number</td>
+					
+					<td><input type="text" name="Roll_No"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+				
+					<td><input type="Email" name="Email"></td>
+				</tr>
+				<tr>
+					<td>Class</td>
+				
+					<td ><input type="text" name="Classs"></td>
+				</tr>
+				<tr>
+					<td>Country</td>
+				
+					<td><select name="Country" size="1">
+						<option value="India">India</option>
+						<option value="Nepal">Nepal</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+				
+					<td ><input type="text" name="Address"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+				
+					<td ><input type="Password" name="Password"></td>
+				</tr>
+                                <tr>
+                                    <td>
+                                       <input type="submit" id="button" name="submit" value="Register">
+                                    </td>
+                                </tr>
+                                 
+			</table>
+			
+			
+		</form>
+		
+	</div>
+	<div class="dropdown" style="float:right;">
+         <button class="dropbtn">Login</button>
+          <div class="dropdown-content">
+            <a href="StudentLogin">Student</a>
+            <a href="AdminLogin">Admin</a>
+          </div>
+       </div>
+    <script type="text/javascript">
+var arrColor = ["#45c1bf", "#f0593e", "#aeacd4", "#bdd630", "#4479bd", "#f5b11e"];
+var header = document.getElementById("header");
+//helper function - get dark or lighter color
+function LightenDarkenColor(col, amt) {
+    var usePound = false;
+    if (col[0] == "#") {
+      col = col.slice(1);
+      usePound = true;
+    }
+    var num = parseInt(col, 16);
+    var r = (num >> 16) + amt;
+    if (r > 255) r = 255;
+    else if (r < 0) r = 0;
+    var b = ((num >> 8) & 0x00FF) + amt;
+    if (b > 255) b = 255;
+    else if (b < 0) b = 0;
+    var g = (num & 0x0000FF) + amt;
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+    return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+  }
+  //random new color
+ function GetNewColor() {
+    var index = Math.floor((Math.random() * 5) + 1);
+    return arrColor[index];
+  }
+  // set new color
+ function SetNewColor(color) {
+    var NewColor = LightenDarkenColor(color, -20);
+    header.style.backgroundColor = NewColor;
+    //footer.style.opacity = 1.2;
+  }
+  // on document load function start
+  (function() {
+    var colorSelected = GetNewColor();
+    SetNewColor(colorSelected);
+  })();
+//change color timer
+ window.setInterval(function() {
+ var colorSelected = GetNewColor();
+ SetNewColor(colorSelected);
+}, 200);
+</script>
+
+
+</body>
+</html>
